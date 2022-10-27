@@ -1,0 +1,34 @@
+{
+  "name": "blogging_api",
+  "version": "1.0.0",
+  "description": "A Blogging API",
+  "main": "./src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/app.js",
+    "dev": "nodemon ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aanu-el/blogging_api.git"
+  },
+  "author": "Peace Faleke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aanu-el/blogging_api/issues"
+  },
+  "homepage": "https://github.com/aanu-el/blogging_api#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.0",
+    "nodemon": "^2.0.20",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
+  }
+}
