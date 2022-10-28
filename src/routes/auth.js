@@ -6,11 +6,21 @@ require('dotenv').config()
 
 const authRouter = new Router()
 
-authRouter.post('/signup', passport.authenticate('signup', { session: false }), async (req, res, next) => {
-    res.json({
-        message: 'Signup successful',
-        user: req.user
-    })
+const UserModel = require("../model/users-model")
+
+authRouter.post('/signup', async (req, res, next) => {
+    const user = req.body
+
+    UserModel.create({ email: user.email, first_name: user.first_name, last_name: user.last_name, password: user.password })
+        .then((user) => {
+            res.status(200).json({
+                message: 'Signup successful',
+                user: user
+            })
+        }).catch((err) => {
+            console.log(err)
+            res.status(500).send(err.message)
+        })
 })
 
 authRouter.post('/login', async (req, res, next) => {
@@ -29,7 +39,7 @@ authRouter.post('/login', async (req, res, next) => {
                 if (error) { return next(error) }
 
                 const body = { _id: user.id, email: user.email }
-                const token = jwt.sign({ user: body }, process.env.JWT_SECRET, {expiresIn: "1h"})
+                const token = jwt.sign({ user: body }, process.env.JWT_SECRET, { expiresIn: "1h" })
 
                 return res.json({ token })
             })
