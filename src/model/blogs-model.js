@@ -15,10 +15,13 @@ const BlogSchema = new Schema({
         type: Number,
         default: 0
     },
-    read_count: Number,
+    read_count: {
+        type: Number,
+        default: 0
+    },
     reading_time: String,
     tags: {
-        type: String
+        type: [String]
     },
     body: {
         type: String,

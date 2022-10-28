@@ -1,11 +1,13 @@
 const express = require("express")
 const bodyParser = require("body-parser")
+const passport = require("passport")
 require("dotenv").config()
 
 const connectToMongoDB = require("./config/db")
 
-const authRoute = require("./routes/auth")
-const blogRoute = require("./routes/blogs")
+const authRouter = require("./routes/auth")
+const blogRouter = require("./routes/blogs")
+const userRouter = require("./routes/users.js")
 require("./auth/auth")
 
 const app = express()
@@ -21,8 +23,9 @@ app.set('view engine', 'ejs')
 app.set('views', 'views')
 
 /* App Routes */
-app.use('/', authRoute)
-app.use('/blogs', blogRoute)
+app.use('/', authRouter)
+app.use('/blogs', passport.authenticate('jwt', { session: false }), blogRouter)
+app.use('/users', passport.authenticate('jwt', { session: false }), userRouter)
 
 /* Home Route */
 app.get('/', (req, res) => {

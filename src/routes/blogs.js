@@ -4,6 +4,6 @@ const BlogRouter = new Router()
 
 const controllers = require("../controllers/blogs")
 
-BlogRouter.get('/', controllers.getAllBlogs)
-
+BlogRouter.get('/', controllers.getAllPublishedBlogs)
+BlogRouter.post('/', controllers.createBlogs)
 module.exports = BlogRouter
