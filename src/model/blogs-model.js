@@ -9,7 +9,8 @@ const BlogSchema = new Schema({
     },
     description: String,
     author: {
-        type: Schema.Types.ObjectId, ref: 'User'
+        type: String,
+        required: true
     },
     state: {
         type: Number,
@@ -26,6 +27,9 @@ const BlogSchema = new Schema({
     body: {
         type: String,
         required: true
+    },
+    author_id: {
+        type: Schema.Types.ObjectId, ref: 'User'
     }
 }, { timestamps: true })
 
