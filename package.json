@@ -2,11 +2,12 @@
   "name": "blogging_api",
   "version": "1.0.0",
   "description": "A Blogging API",
-  "main": "./src/app.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/app.js",
-    "dev": "nodemon ./src/app.js"
+    "test": "jest",
+    "pretest": "cross-env NODE-ENV=test",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -30,5 +31,8 @@
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }

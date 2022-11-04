@@ -24,13 +24,13 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 
 /* App Routes */
-app.use('/', authRouter)
-app.use('/my-blogs', passport.authenticate('jwt', { session: false }), blogRouter)
-app.use('/users', passport.authenticate('jwt', { session: false }), userRouter)
+app.use('/api', authRouter)
+app.use('/api/my-blogs', passport.authenticate('jwt', { session: false }), blogRouter)
+app.use('/api/users', passport.authenticate('jwt', { session: false }), userRouter)
 
 /* Home Route */
-app.get('/', controllers.homePageHandler)
-app.get('/:id', controllers.getAPublishedBlog)
+app.get('/api/', controllers.homePageHandler)
+app.get('/api/:id', controllers.getAPublishedBlog)
 
 /* Error Handler */
 app.use((err, req, res, next) => {
