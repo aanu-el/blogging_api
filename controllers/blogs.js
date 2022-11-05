@@ -41,28 +41,25 @@ async function getAllUserBlogs(req, res) {
     // Get User Details from Token
     const user = services.getUserFromToken(req, res)
 
+    const findQuery = {}
+    findQuery.author_id = user._id
+
     if (state) {
-        await BlogModel.find({ author_id: user._id, state: state }, { author_id: 0 })
+        findQuery.state = state
+    }
+
+    try {
+        const blogs = await BlogModel.find(findQuery, { author_id: 0 })
             .skip(page * booksPerPage)
             .limit(booksPerPage)
-            .then((blogs) => {
-                return res.status(200).send(blogs)
-            }).catch((err) => {
-                console.log(err)
-                res.status(500).send(err.message)
-            })
-    } else {
-        await BlogModel.find({ author_id: user._id }, { author_id: 0 })
-            .skip(page * booksPerPage)
-            .limit(booksPerPage)
-            .then((blogs) => {
-                return res.status(200).send(blogs)
-            }).catch((err) => {
-                console.log(err)
-                res.status(500).send(err.message)
-            })
+
+        return res.status(200).send(blogs)
+    } catch (err) {
+        console.log(err)
+        res.status(500).send(err.message)
     }
 }
+
 
 /* Update Blogs created by the Logged In user */
 async function updateBlog(req, res) {
@@ -87,6 +84,7 @@ async function updateBlog(req, res) {
             res.status(500).send(err.message)
         })
 }
+
 
 /* Delete Blogs created by the Logged In user */
 async function deleteBlog(req, res) {
