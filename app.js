@@ -11,7 +11,7 @@ const userRouter = require("./routes/users.js")
 
 require("./auth/auth")
 
-const controllers = require("./controllers/blogs")
+const controllers = require("./controllers/index")
 
 /* Initialize App */
 const app = express()
@@ -44,3 +44,5 @@ const PORT = process.env.PORT
 app.listen(PORT, () => {
     console.log(`Server Listening on PORT ${PORT}`)
 })
+
+module.exports = app
