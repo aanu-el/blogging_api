@@ -22,6 +22,9 @@ connectToMongoDB()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
+app.set('view engine', 'ejs')
+app.set('views', 'views')
+
 
 /* App Routes */
 app.use('/api', authRouter)
@@ -29,6 +32,9 @@ app.use('/api/my-blogs', passport.authenticate('jwt', { session: false }), blogR
 app.use('/api/users', passport.authenticate('jwt', { session: false }), userRouter)
 
 /* Home Route */
+app.get('/', (req, res) => {
+    res.status(200).render('index')
+})
 app.get('/api/', controllers.homePageHandler)
 app.get('/api/:id', controllers.getAPublishedBlog)
 
