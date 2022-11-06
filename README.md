@@ -40,3 +40,19 @@
 | first_name | string | required |
 | last_name | string | required |
 | password | string | 
+
+### Blog
+| field | data_type | constraints |
+| ---- | ---- | ---- |
+| id | string | required |
+| title | string | required, unique |
+| description | string | 
+| author | string | required |
+| state | number | default: 0 |
+| read_count | number | 
+| reading_time | string | 
+| tags | [string] | 
+| body | string | required |
+| author_id | string | required |
+| timestamp | timestamp | 
+
