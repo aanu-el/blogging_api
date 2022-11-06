@@ -58,13 +58,13 @@
 
 ## APIs
 ### Home
-- Route: /api
+- Route: `/api`
 - Method: GET
 
 ### Signup User
-- Route: /api/signup
+- Route: `/api/signup`
 - Method: POST
 
 ### Login User
-- Route: /api/login
+- Route: `/api/login`
 - Method: POST
