@@ -49,8 +49,8 @@
 | description | string | 
 | author | string | required |
 | state | number | default: 0 |
-| read_count | number | 
-| reading_time | string | 
+| read_count | number | default: 0 |
+| reading_time | string |
 | tags | [string] | 
 | body | string | required |
 | author_id | string | required |
