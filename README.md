@@ -56,3 +56,15 @@
 | author_id | string | required |
 | timestamp | timestamp | 
 
+## APIs
+### Home
+- Route: /api
+- Method: GET
+
+### Signup User
+- Route: /api/signup
+- Method: POST
+
+### Login User
+- Route: /api/login
+- Method: POST
