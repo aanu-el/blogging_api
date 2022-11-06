@@ -22,10 +22,21 @@
 ## Setup
 - Install NodeJs, mongodb
 - pull this repo
-- update env with example.env
+- create `.env` file
+  - specify a PORT number: `PORT=3333`
+  - connect mongodb: `MONGODB_CONNECTION_URL=mongodb://localhost/`
+  - specify a JWT_SECRET: `JWT_SECRET=something-secret`
 - run `npm run start`
 
 ## Base URL
 - https://blogging-api-x32y.onrender.com/
 
 ## Models
+### User
+| field | data_type | constraints |
+| ---- | ---- | ---- |
+| id | string | required |
+| email | string | required, unique |
+| first_name | string | required |
+| last_name | string | required |
+| password | string | 
