@@ -3,7 +3,7 @@ require("dotenv").config()
 
 const MONGODB_CONNECTION_URL = process.env.MONGODB_CONNECTION_URL
 
-const TEST_MONGODB_CONNECTION_URL = process.env.TEST_MONGODB_CONNECTION_UR
+const TEST_MONGODB_CONNECTION_URL = process.env.TEST_MONGODB_CONNECTION_URL
 
 if (process.env.NODE_ENV == 'test') {
     function connectToMongoDB() {

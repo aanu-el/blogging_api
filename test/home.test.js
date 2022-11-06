@@ -1,14 +1,14 @@
+const mongoose = require("mongoose")
 const supertest = require("supertest")
 const app = require("../app")
 
-const users = {
-    "email": " "
-}
+require("dotenv").config()
 
 describe('Home Route', () => {
-    it('Should return status true', async () => {
-        const response = await supertest(app).get('/api')
+
+    it('Should return status 200', async () => {
+        const response = await supertest(app).get('/api/')
         expect(response.status).toBe(200)
-        // expect(response.body).toBe([])
+        expect(typeof response.body).toBe("object")
     })
 })
