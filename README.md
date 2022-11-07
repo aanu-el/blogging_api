@@ -69,26 +69,29 @@
 - Route: `/api/login`
 - Method: POST
 
-## Create Blog
+### Create Blog
 - Route: `/api/my-blogs`
 - Method: POST
 - Header
   - Authorization: Bearer {token}
 
-## Get All Blogs of a User
+### Get All Blogs of a User
 - Route: `/api/my-blogs`
 - Method: GET
 - Header
   - Authorization: Bearer {token}
   
- ## Update Blog
+ ### Update Blog
 - Route: `/api/my-blogs/:id`
 - Method: PATCH
 - Header
   - Authorization: Bearer {token}
 
-## Delete Blog
+### Delete Blog
 - Route: `/api/my-blogs/:id`
 - Method: DELETE
 - Header
   - Authorization: Bearer {token}
+
+## Contributor
+- Faleke Peace
