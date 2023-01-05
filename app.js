@@ -1,13 +1,15 @@
 const express = require("express")
 const bodyParser = require("body-parser")
 const passport = require("passport")
+const helmet = require("helmet")
 require("dotenv").config()
 
 const connectToMongoDB = require("./config/db")
 
 const authRouter = require("./routes/auth")
 const blogRouter = require("./routes/blogs")
-const userRouter = require("./routes/users.js")
+const userRouter = require("./routes/users")
+const { Limiter } = require("./services/services")
 
 require("./auth/auth")
 
@@ -19,8 +21,13 @@ const app = express()
 /* Connect to Database */
 connectToMongoDB()
 
+
+app.use(helmet())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+
+// Apply the rate limiting middleware to all requests
+app.use(Limiter)
 
 app.set('view engine', 'ejs')
 app.set('views', 'views')

@@ -1,3 +1,5 @@
+const rateLimit = require("express-rate-limit")
+
 function getUserFromToken(req, res) {
     const { authorization } = req.headers
     const [_, token] = authorization.split(" ")
@@ -6,5 +8,11 @@ function getUserFromToken(req, res) {
     return decodedToken.user
 }
 
+const Limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    standardHeaders: true,
+    legacyHeaders: false
+})
 
-module.exports = { getUserFromToken }
+module.exports = { getUserFromToken, Limiter }
