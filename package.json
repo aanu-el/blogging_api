@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/aanu-el/blogging_api#readme",
   "dependencies": {
+    "@sentry/node": "^7.29.0",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
     "dotenv": "^16.0.3",

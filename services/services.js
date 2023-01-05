@@ -1,5 +1,9 @@
 const rateLimit = require("express-rate-limit")
 
+require("dotenv").config()
+
+
+
 function getUserFromToken(req, res) {
     const { authorization } = req.headers
     const [_, token] = authorization.split(" ")
@@ -14,5 +18,7 @@ const Limiter = rateLimit({
     standardHeaders: true,
     legacyHeaders: false
 })
+
+
 
 module.exports = { getUserFromToken, Limiter }

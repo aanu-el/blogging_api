@@ -18,8 +18,7 @@ authRouter.post('/signup', async (req, res, next) => {
                 user: user
             })
         }).catch((err) => {
-            console.log(err)
-            res.status(500).send(err.message)
+           return next(err)
         })
 })
 
@@ -40,7 +39,7 @@ authRouter.post('/login', async (req, res, next) => {
 
                 const body = { _id: user.id, email: user.email, first_name: user.first_name, last_name: user.last_name }
                 
-                const token = jwt.sign({ user: body }, process.env.JWT_SECRET, { expiresIn: "1h" })
+                const token = jwt.sign({ user: body }, process.env.JWT_SECRET, { expiresIn: "3h" })
 
                 return res.json({ token })
             })

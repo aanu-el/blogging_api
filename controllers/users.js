@@ -1,6 +1,6 @@
 const UserModel = require("../model/users-model")
 
-async function getUsers(req, res) {
+async function getUsers(req, res, next) {
     const { authorization } = req.headers
 
     const [_, token] = authorization.split(" ")
@@ -14,7 +14,7 @@ async function getUsers(req, res) {
             return res.json({ user })
         }).catch((err) => {
             console.log(err)
-            return res.status(500).send(err.message)
+            next(err)
         })
 }
 
