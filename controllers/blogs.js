@@ -3,7 +3,7 @@ const services = require("../services/services")
 
 
 /* Logged in Users Can Create Blogs */
-async function createBlogs(req, res) {
+async function createBlogs(req, res, next) {
     const newBlog = req.body
 
     // Get User Details from Token
@@ -28,12 +28,12 @@ async function createBlogs(req, res) {
             return res.status(201).json({ message: "Success!", blog })
         }).catch((err) => {
             console.log(err)
-            return res.status(500).send(err.message)
+            next(err)
         })
 }
 
 /* Get all Blogs created by the Logged In user */
-async function getAllUserBlogs(req, res) {
+async function getAllUserBlogs(req, res, next) {
     // Get the request param
     const page = req.query.page || 0
     const state = req.query.state
@@ -56,13 +56,13 @@ async function getAllUserBlogs(req, res) {
         return res.status(200).send(blogs)
     } catch (err) {
         console.log(err)
-        res.status(500).send(err.message)
+        next(err)
     }
 }
 
 
 /* Update Blogs created by the Logged In user */
-async function updateBlog(req, res) {
+async function updateBlog(req, res, next) {
     const blog_Id = req.params.id
     const detailsToUpdate = req.body
     const user = services.getUserFromToken(req, res)
@@ -81,13 +81,13 @@ async function updateBlog(req, res) {
             }
         }).catch((err) => {
             console.log(err)
-            res.status(500).send(err.message)
+            next(err)
         })
 }
 
 
 /* Delete Blogs created by the Logged In user */
-async function deleteBlog(req, res) {
+async function deleteBlog(req, res, next) {
     const blog_Id = req.params.id
     const user = services.getUserFromToken(req, res)
 
@@ -105,7 +105,7 @@ async function deleteBlog(req, res) {
             }
         }).catch((err) => {
             console.log(err)
-            res.status(500).send(err.message)
+            next(err)
         })
 }
 
