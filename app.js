@@ -27,16 +27,16 @@ app.set('views', 'views')
 
 
 /* App Routes */
-app.use('/api', authRouter)
-app.use('/api/my-blogs', passport.authenticate('jwt', { session: false }), blogRouter)
-app.use('/api/users', passport.authenticate('jwt', { session: false }), userRouter)
+app.use('/api/v1', authRouter)
+app.use('/api/v1/my-blogs', passport.authenticate('jwt', { session: false }), blogRouter)
+app.use('/api/v1/users', passport.authenticate('jwt', { session: false }), userRouter)
 
 /* Home Route */
 app.get('/', (req, res) => {
     res.status(200).render('index')
 })
-app.get('/api/', controllers.homePageHandler)
-app.get('/api/:id', controllers.getAPublishedBlog)
+app.get('/api/v1', controllers.homePageHandler)
+app.get('/api/v1/:id', controllers.getAPublishedBlog)
 
 /* Error Handler */
 app.use((err, req, res, next) => {
