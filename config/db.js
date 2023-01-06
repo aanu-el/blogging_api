@@ -1,6 +1,8 @@
 const mongoose = require("mongoose")
 require("dotenv").config()
 
+mongoose.set('strictQuery', false)
+
 const MONGODB_CONNECTION_URL = process.env.MONGODB_CONNECTION_URL
 
 const TEST_MONGODB_CONNECTION_URL = process.env.TEST_MONGODB_CONNECTION_URL
