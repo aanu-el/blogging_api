@@ -58,37 +58,37 @@
 
 ## APIs
 ### Home
-- Route: `/api`
+- Route: `/api/v2`
 - Method: GET
 
 ### Signup User
-- Route: `/api/signup`
+- Route: `/api/v2/signup`
 - Method: POST
 
 ### Login User
-- Route: `/api/login`
+- Route: `/api/v2/login`
 - Method: POST
 
 ### Create Blog
-- Route: `/api/my-blogs`
+- Route: `/api/v2/my-blogs`
 - Method: POST
 - Header
   - Authorization: Bearer {token}
 
 ### Get All Blogs of a User
-- Route: `/api/my-blogs`
+- Route: `/api/v2/my-blogs`
 - Method: GET
 - Header
   - Authorization: Bearer {token}
   
  ### Update Blog
-- Route: `/api/my-blogs/:id`
+- Route: `/api/v2/my-blogs/:id`
 - Method: PATCH
 - Header
   - Authorization: Bearer {token}
 
 ### Delete Blog
-- Route: `/api/my-blogs/:id`
+- Route: `/api/v2/my-blogs/:id`
 - Method: DELETE
 - Header
   - Authorization: Bearer {token}
